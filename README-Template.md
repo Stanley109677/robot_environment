@@ -54,54 +54,13 @@ roslaunch raspimouse_gazebo main_2robots.launch
 ```
 
 Enter the following command for 20 robots simulator.
+![twenty_bots](https://user-images.githubusercontent.com/124341547/216554855-e6a1203c-6cfe-4244-847d-77e4b3c45d4a.png)
 ```
 roslaunch raspimouse_gazebo main_20robots.launch
 ```
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
+Enter the following command for 8 multicolor-robots simulator in the crossroad scenario.
+![trafficlights_bots](https://user-images.githubusercontent.com/124341547/216554913-5593dbe5-27f6-4f28-a74b-49c028adc7fc.png)
 ```
-code blocks for commands
+roslaunch raspimouse_gazebo main_multicolor.launch 
 ```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
-## Authors
-
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
