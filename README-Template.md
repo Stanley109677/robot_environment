@@ -1,17 +1,62 @@
-# Project Title
+# Multiple RaspberryPiMouse robots simulator
 
-Simple overview of use/purpose.
+Gazebo simulator for multiple RT RaspberryPiMouse robots
+The same as https://github.com/keeratifts/Multiple-RaspberryPiMouse-robots-simulator#multiple-raspberrypimouse-robots-simulator
+Only changes is the name change from 'Multiple-RaspberryPiMouse-robots-simulator' to 'robot_environment'
 
-## Description
+## Requirements
 
-An in-depth paragraph about your project and overview of use.
+* Computer
+   * ROS
+      * [Kinetic Kame](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+      * [Melodic Morenia](http://wiki.ros.org/melodic/Installation/Ubuntu)
+      * [Noetic Ninjemys](http://wiki.ros.org/noetic/Installation/Ubuntu)
+   * Gazebo
+      * Gazebo 9.x
 
-## Getting Started
+## Installation
 
-### Dependencies
+Download this package & install all system dependecies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+```
+cd ~/<your_workspace>/src
+git clone https://github.com/keeratifts/Multiple-RaspberryPiMouse-robots-simulator.git
+git clone https://github.com/ryuichiueda/raspimouse_ros_2.git
+rosdep install raspimouse_ros_2
+cd ~/<your_workspace>/src/Multiple-RaspberryPiMouse-robots-simulator
+rosdep install -r -y -i --from-paths raspimouse*
+```
+
+Build up this package
+```
+cd ~/<your_workspace>
+catkin_make
+source devel/setup.bash
+```
+
+Download the Gazebo model
+```
+rosrun raspimouse_gazebo download_gazebo_models.sh
+```
+
+### Getting started
+
+Enter the following command for single robot simulator.
+![single_bots](https://user-images.githubusercontent.com/124341547/216545614-33680131-e06c-4087-9902-6f612e4bd28e.png)
+```
+roslaunch raspimouse_gazebo main_singlerobot.launch 
+```
+
+Enter the following command for 2 robots simulator.
+![two_bots](https://user-images.githubusercontent.com/124341547/216545811-ba9b18c5-d6c0-4d5f-bea4-959831b4aad3.png)
+```
+roslaunch raspimouse_gazebo main_2robots.launch
+```
+
+Enter the following command for 20 robots simulator.
+```
+roslaunch raspimouse_gazebo main_20robots.launch
+```
 
 ### Installing
 
