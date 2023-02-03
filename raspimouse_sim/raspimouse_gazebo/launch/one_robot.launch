@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Definitions of arguments that you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="robot_namespace"/>
+  <arg name="urg" default="true" />
+  <arg name="laser_option" default="laser_visual:=false" />
+  <arg name="lidar_frame" default="laser" />
+  <arg name="xacro_option" default="" />
+  <arg name="init_pose"/>
+  <!-- To visualize the barrier range, max range need to be half of the barrier radius-->
+  <arg name="max_range" default = "0.6" /> 
+  <arg name="rad_range" default = "6.28" />
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="$(arg init_pose) -urdf -param robot_description -model $(arg robot_namespace)"/>
+
+  <!-- Convert joint states to TF transforms for rviz, etc -->
+  <!-- this requires joint_state_controller -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    output="screen" />
+
+  <arg name="urg_option" value="lidar:='urg'" if="$(arg urg)" />
+  <arg name="urg_option" value="lidar:='none'" unless="$(arg urg)" />
+
+  <param name="robot_description"
+      command="$(find xacro)/xacro --inorder $(find raspimouse_description)/urdf/raspimouse.urdf.xacro gazebo_plugin:=true tf:=true
+                robot_namespace:='$(arg robot_namespace)'
+                diffdrive_namespace:='$(arg robot_namespace)'
+                sensor_namespace:='$(arg robot_namespace)'
+                max_range:='$(arg max_range)'
+                rad_range:='$(arg rad_range)'
+                $(arg urg_option) $(arg laser_option) lidar_frame:='$(arg lidar_frame)'
+                $(arg xacro_option)" />
+</launch>

@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <road name="road_1">
+    <width>1</width>
+    <point>-10 0 0.001</point>
+    <point>10 0 0.001</point>
+    <static>0</static>
+    </road>
+    <road name="road_2">
+    <width>1.0</width>
+    <point>0 -10 0.001</point>
+    <point>0 10 0.001</point>
+    </road>
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>/usr/share/gazebo-11/media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+  </world>
+</sdf>
